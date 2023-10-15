@@ -11,43 +11,69 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
       home: Scaffold(
-        floatingActionButton: FloatingActionButton(onPressed: (){}, child: Icon(Icons.reorder)),
-        appBar: AppBar(
-          title: Text('EmergenShare'),
-          backgroundColor: Colors.black
+        appBar:AppBar(backgroundColor: Colors.black, elevation: 0,
+          title: Text('EmergenShare', style: TextStyle(fontSize: 40)),
+        ),
+        endDrawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              UserAccountsDrawerHeader(
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: Colors.white,
+                ),
+                  accountName: Text('000병원 000님', style: TextStyle(fontSize: 25)),
+                  accountEmail: Text('dankook@gmail.com', style: TextStyle(fontSize: 17)),
+                decoration: BoxDecoration(color: Colors.black)
+              ),
+              ListTile()
+              ],
+          )
         ),
         body: ListView.builder(
-            itemCount: 4,
+            itemCount: 5,
             itemBuilder: (c, i){
               return Container(
                 decoration: BoxDecoration(
                   border: Border(bottom: BorderSide(color: Colors.black, width: 3))
                 ),
-                height: 200,
+                height: 150,
                 child: Column( crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('${i+1}번환자', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+                children: [ Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                        margin: EdgeInsets.all(10),
+                        child: Text('${i+1}번 환자   나이: ${34-3*i}세', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600))
+                    ),
+                    TextButton(onPressed: (){
+
+                    }, style: ButtonStyle(overlayColor: MaterialStateColor.resolveWith((states) => Colors.transparent),),
+                        child: Icon(Icons.arrow_right_alt, size: 40, color: Colors.black))
+                  ]
+                ),
                   SizedBox(height: 50, child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
                         Tag('출혈'),
-                        Tag('출혈'),
-                        Tag('출혈'),
-                        Tag('출혈'),
-                        Tag('출혈'),
-                        Tag('출혈'),
-                        Tag('출혈'),
-                        Tag('출혈'),
-                        Tag('출혈'),
-                        Tag('출혈'),
-                        Tag('출혈'),
+                        Tag('골절'),
+                        Tag('절단'),
+                        Tag('복통'),
+                        Tag('구토'),
+                        Tag('어지럼증'),
+                        Tag('가려움'),
+                        Tag('타박상'),
+                        Tag('발작'),
+                        Tag('두드러기'),
+                        Tag('호흡곤란'),
                         Tag('자상')
                       ]
                     ),
                   ),
-                  )
+                  ),
+                  Container(margin: EdgeInsets.fromLTRB(20, 0, 0, 0), child: Color(i))
                 ]
                 )
               );
@@ -72,3 +98,24 @@ class Tag extends StatelessWidget {
     );
   }
 }
+class Color extends StatelessWidget {
+  final int i;
+
+  Color(@required this.i);
+
+  @override
+  Widget build(BuildContext context) {
+    if(i+1 == 1) {
+      return Text('KTAS: ${i + 1}단계', style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w600));
+    }else if(i+1 == 2){
+      return Text('KTAS: ${i + 1}단계', style: TextStyle(color: Colors.red, fontSize: 25, fontWeight: FontWeight.w600));
+    }else if(i+1 == 3){
+      return Text('KTAS: ${i + 1}단계', style: TextStyle(color: Colors.yellow, fontSize: 25, fontWeight: FontWeight.w600));
+    }else if(i+1 == 4){
+      return Text('KTAS: ${i + 1}단계', style: TextStyle(color: Colors.green, fontSize: 25, fontWeight: FontWeight.w600));
+    }else{
+      return Text('KTAS: ${i + 1}단계', style: TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.w600));
+    }
+  }
+}
+
