@@ -28,7 +28,14 @@ class MyApp extends StatelessWidget {
                   accountEmail: Text('dankook@gmail.com', style: TextStyle(fontSize: 17)),
                 decoration: BoxDecoration(color: Colors.black)
               ),
-              ListTile()
+          TextButton(onPressed: (){
+
+          }, style: ButtonStyle(overlayColor: MaterialStateColor.resolveWith((states) => Colors.transparent),),
+            child:ListTile(
+                leading: Icon(Icons.assignment, color: Colors.black),
+                title: Text('수락한 환자 목록 보기', style: TextStyle(color: Colors.black)),
+                trailing: Icon(Icons.arrow_right_alt, size: 40, color: Colors.black))
+              ),
               ],
           )
         ),
@@ -99,22 +106,22 @@ class Tag extends StatelessWidget {
   }
 }
 class Color extends StatelessWidget {
-  final int i;
+  final int a;
 
-  Color(@required this.i);
+  Color(@required this.a);
 
   @override
   Widget build(BuildContext context) {
-    if(i+1 == 1) {
-      return Text('KTAS: ${i + 1}단계', style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w600));
-    }else if(i+1 == 2){
-      return Text('KTAS: ${i + 1}단계', style: TextStyle(color: Colors.red, fontSize: 25, fontWeight: FontWeight.w600));
-    }else if(i+1 == 3){
-      return Text('KTAS: ${i + 1}단계', style: TextStyle(color: Colors.yellow, fontSize: 25, fontWeight: FontWeight.w600));
-    }else if(i+1 == 4){
-      return Text('KTAS: ${i + 1}단계', style: TextStyle(color: Colors.green, fontSize: 25, fontWeight: FontWeight.w600));
+    if(a+1 == 1) {
+      return Text('KTAS: ${a + 1}단계', style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w600));
+    }else if(a+1 == 2){
+      return Text('KTAS: ${a + 1}단계', style: TextStyle(color: Colors.red, fontSize: 25, fontWeight: FontWeight.w600));
+    }else if(a+1 == 3){
+      return Text('KTAS: ${a + 1}단계', style: TextStyle(color: Colors.yellow, fontSize: 25, fontWeight: FontWeight.w600));
+    }else if(a+1 == 4){
+      return Text('KTAS: ${a + 1}단계', style: TextStyle(color: Colors.green, fontSize: 25, fontWeight: FontWeight.w600));
     }else{
-      return Text('KTAS: ${i + 1}단계', style: TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.w600));
+      return Text('KTAS: ${a + 1}단계', style: TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.w600));
     }
   }
 }
