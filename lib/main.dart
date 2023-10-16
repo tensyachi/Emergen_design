@@ -16,29 +16,6 @@ class MyApp extends StatelessWidget {
         appBar:AppBar(backgroundColor: Colors.black, elevation: 0,
           title: Text('EmergenShare', style: TextStyle(fontSize: 40)),
         ),
-        endDrawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              UserAccountsDrawerHeader(
-                currentAccountPicture: CircleAvatar(
-                  backgroundColor: Colors.white,
-                ),
-                  accountName: Text('000병원 000님', style: TextStyle(fontSize: 25)),
-                  accountEmail: Text('dankook@gmail.com', style: TextStyle(fontSize: 17)),
-                decoration: BoxDecoration(color: Colors.black)
-              ),
-          TextButton(onPressed: (){
-
-          }, style: ButtonStyle(overlayColor: MaterialStateColor.resolveWith((states) => Colors.transparent),),
-            child:ListTile(
-                leading: Icon(Icons.assignment, color: Colors.black),
-                title: Text('수락한 환자 목록 보기', style: TextStyle(color: Colors.black)),
-                trailing: Icon(Icons.arrow_right_alt, size: 40, color: Colors.black))
-              ),
-              ],
-          )
-        ),
         body: ListView.builder(
             itemCount: 5,
             itemBuilder: (c, i){
