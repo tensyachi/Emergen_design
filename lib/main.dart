@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+      MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MyApp()
+  )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -10,9 +15,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
+        floatingActionButton: FloatingActionButton(onPressed: (){
+        showModalBottomSheet(
+            context: context,
+            builder: (BuildContext context) {
+              return Container(height: 700,
+                  child: Container(margin: EdgeInsets.only(left:55, right:25),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(70))
+                  ))
+              );
+            }
+            );
+        }
+        ),
         appBar:AppBar(backgroundColor: Colors.black, elevation: 0,
           title: Text('EmergenShare', style: TextStyle(fontSize: 40)),
         ),
@@ -63,8 +81,7 @@ class MyApp extends StatelessWidget {
               );
             }
         )
-      )
-    );
+      );
   }
 }
 
